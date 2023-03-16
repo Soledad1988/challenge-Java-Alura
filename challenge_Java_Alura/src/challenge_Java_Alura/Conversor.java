@@ -2,10 +2,14 @@ package challenge_Java_Alura;
 
 import javax.swing.JOptionPane;
 
-
 public class Conversor {
 
 	public static void main(String[] args) {
+		
+		//Instanciar monedas
+				Moneda dolar = new Moneda(202.56,"USD");
+				Moneda euro = new Moneda(215.13,"EUR");
+				Moneda libra = new Moneda(245.12,"GBP");
 		
 		String menu = (JOptionPane.showInputDialog(null,"Selecciones el conversor","Conversores",JOptionPane.PLAIN_MESSAGE,
 				null, new Object[] {"Conversor de monedas","Conversor de Temperatura"},"Seleccionar")).toString();
@@ -17,25 +21,26 @@ public class Conversor {
 							"De peso a Yen", "De Peso a Won Coreano", "De Dolar a Peso",
 							"De Euro a Peso","De Libras a Peso"},"Seleccionar")).toString();
 			
-			// por si no elige ninguna opcion de conversion
-			if (moneda==null) {
-				JOptionPane.showInputDialog(null,"Salio del conversor");
-				
-			// por si escoge no seguir se sale del programa
-				System.exit(0);
-			}
 			
 			switch(moneda) {
 			case "De Peso a Dolar":
-				convertir(315.20,"de peso a dolar");
+				convertir(dolar.getCotizacion(),"USD");
 			break;
 			
 			case "De Peso a Euro":
-				convertir(250.20,"de peso a Euro");
+				convertir(euro.getCotizacion(),"EUR");
 			break;
 			
 			case "De Peso a Libras":
-				JOptionPane.showMessageDialog(null,"De Peso a Libras");
+				convertir(libra.getCotizacion(),"GBP");
+			break;
+			
+			case "De peso a Yen":
+				convertir(libra.getCotizacion(),"JPY");
+			break;
+			
+			case "De Peso a Won Coreano":
+				convertir(libra.getCotizacion(),"KRW");
 			break;
 			
 			
@@ -65,7 +70,7 @@ public class Conversor {
 		
 		conversion = (double)Math.round(conversion * 100d)/100;
 		
-		JOptionPane.showInternalMessageDialog(null, "Representa "+conversion +" Dolares");
+		JOptionPane.showInternalMessageDialog(null, "Representa "+conversion);
 	}
 
 		
