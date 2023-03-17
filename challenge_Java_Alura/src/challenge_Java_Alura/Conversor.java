@@ -7,66 +7,77 @@ public class Conversor {
 	public static void main(String[] args) {
 		
 		//Instanciar monedas
-				Moneda dolar = new Moneda(202.56,"USD");
+				Moneda dolar = new Moneda(202.94,"USD");
 				Moneda euro = new Moneda(215.13,"EUR");
 				Moneda libra = new Moneda(245.12,"GBP");
 		
-		while(true) {		
+				
+		while(true) {
+		
+		try {
 		String menu = (JOptionPane.showInputDialog(null,"Selecciones el conversor","Conversores",JOptionPane.PLAIN_MESSAGE,
 				null, new Object[] {"Conversor de monedas","Conversor de Temperatura"},"Seleccionar")).toString();
 		
-		if(menu.toString().equals("Conversor de monedas")) {
+			if(menu.toString().equals("Conversor de monedas")) {
+				
+				String moneda = (JOptionPane.showInputDialog(null,"Selecciones la moneda","Monedas",JOptionPane.PLAIN_MESSAGE,
+						null, new Object[] {"De Peso a Dolar", "De Peso a Euro", "De Peso a Libras",
+								"De peso a Yen", "De Peso a Won Coreano", "De Dolar a Peso",
+								"De Euro a Peso","De Libras a Peso"},"Seleccionar")).toString();
 			
-			String moneda = (JOptionPane.showInputDialog(null,"Selecciones la moneda","Monedas",JOptionPane.PLAIN_MESSAGE,
-					null, new Object[] {"De Peso a Dolar", "De Peso a Euro", "De Peso a Libras",
-							"De peso a Yen", "De Peso a Won Coreano", "De Dolar a Peso",
-							"De Euro a Peso","De Libras a Peso"},"Seleccionar")).toString();
-			
+				
 			
 			switch(moneda) {
 			case "De Peso a Dolar":
-				convertir(dolar.getCotizacion(),"USD");
+				divisasPesos(dolar.getCotizacion(),"USD");
 				finalizar();
 			break;
 			
 			case "De Peso a Euro":
-				convertir(euro.getCotizacion(),"EUR");
+				divisasPesos(euro.getCotizacion(),"EUR");
 				finalizar();
 			break;
 			
 			case "De Peso a Libras":
-				convertir(libra.getCotizacion(),"GBP");
+				divisasPesos(libra.getCotizacion(),"GBP");
 				finalizar();
 			break;
 			
 			case "De peso a Yen":
-				convertir(libra.getCotizacion(),"JPY");
+				divisasPesos(libra.getCotizacion(),"JPY");
 				finalizar();
 			break;
 			
 			case "De Peso a Won Coreano":
-				convertir(libra.getCotizacion(),"KRW");
+				divisasPesos(libra.getCotizacion(),"KRW");
 				finalizar();
 			break;
 			
+			case "De Dolar a Peso":
+				pesosDivisas(dolar.getCotizacion(),"USD");
+				finalizar();
+			
 			
 			default:
-				JOptionPane.showMessageDialog(null,"De Peso a Libras");
-				finalizar();
+				
 			break;
 			}
 			
 			
 		}else {
-			JOptionPane.showMessageDialog(null,"Por el momento no esta habilitado");
+			JOptionPane.showMessageDialog(null,"Por el momento no esta habilitado\n"+"\nLo estoy programando..");
 			finalizar();
 		}}
+		catch(NullPointerException ex){
+			finalizar();
+		}}
+
 		
 	}
 	
-	//conversor
+	//------conversor divisas a pesos--------------
 	
-	static void convertir(double valorMoneda, String moneda) {
+	static void divisasPesos(double valorMoneda, String moneda) {
 		double valorIngresado = 0;
 		
 		try {
@@ -81,6 +92,24 @@ public class Conversor {
 		
 		JOptionPane.showInternalMessageDialog(null, "Representa "+conversion);
 	}
+	
+	//------conversor pesos a divisas--------------
+	static void pesosDivisas(double valorIngresado, String moneda) {
+		double valorMoneda = 0;
+		
+		try {
+			valorMoneda = Double.parseDouble(JOptionPane.showInputDialog("ingrese la cantidad de divisas que desea convertir "));
+		}catch(NumberFormatException ex){
+			JOptionPane.showMessageDialog(null, "Solo se permiten números");
+		}
+		
+		double conversion = valorIngresado * valorMoneda;
+		
+		conversion = (double)Math.round(conversion * 100d)/100;
+		
+		JOptionPane.showInternalMessageDialog(null, "Representa "+conversion+" $");
+	}
+	
 	
 	//-------Funcion Finalizar el programa------------------
 		public static void finalizar() {
