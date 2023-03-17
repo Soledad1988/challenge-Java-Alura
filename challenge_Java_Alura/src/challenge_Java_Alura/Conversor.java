@@ -10,10 +10,15 @@ public class Conversor {
 				Moneda dolar = new Moneda(202.94,"USD");
 				Moneda euro = new Moneda(215.13,"EUR");
 				Moneda libra = new Moneda(245.12,"GBP");
+				Moneda yen = new Moneda();
+				yen.setCotizacion(1.54);
+				Moneda won = new Moneda();
+				won.setCotizacion(0.16);
 		
 				
 		while(true) {
 		
+			//----------Menú ------------------------
 		try {
 		String menu = (JOptionPane.showInputDialog(null,"Selecciones el conversor","Conversores",JOptionPane.PLAIN_MESSAGE,
 				null, new Object[] {"Conversor de monedas","Conversor de Temperatura"},"Seleccionar")).toString();
@@ -44,12 +49,12 @@ public class Conversor {
 			break;
 			
 			case "De peso a Yen":
-				divisasPesos(libra.getCotizacion(),"JPY");
+				divisasPesos(yen.getCotizacion(),"JPY");
 				finalizar();
 			break;
 			
 			case "De Peso a Won Coreano":
-				divisasPesos(libra.getCotizacion(),"KRW");
+				divisasPesos(won.getCotizacion(),"KRW");
 				finalizar();
 			break;
 			

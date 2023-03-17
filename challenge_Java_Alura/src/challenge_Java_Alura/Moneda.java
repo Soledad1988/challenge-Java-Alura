@@ -5,6 +5,9 @@ public class Moneda {
 	String tipo;
 	double cotizacion;
 	
+	public Moneda() {
+	
+	}
 	
 	public Moneda(double cotizacion, String tipo) {
 		this.tipo = tipo;
