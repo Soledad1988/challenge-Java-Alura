@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/challenge_Java_Alura/video/20230317_203354.mp4</name>
-			<type>1</type>
-			<location>D:/Users/Brenda/Downloads/20230317_203354.mp4</location>
-		</link>
-	</linkedResources>
 </projectDescription>
